@@ -9,12 +9,9 @@ import {
 } from "./content/portfolioContent";
 
 function App() {
-  const sectionIds = useMemo(
-    () => ["mind-interface", ...navItems.map((item) => item.id)],
-    []
-  );
   const [activeSection, setActiveSection] = useState("mind-interface");
   const [visibleSections, setVisibleSections] = useState(() => new Set(["mind-interface"]));
+  const [isTopbarStuck, setIsTopbarStuck] = useState(false);
 
   useEffect(() => {
     const sections = document.querySelectorAll("[data-section]");
@@ -44,28 +41,41 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const syncTopbar = () => {
+      setIsTopbarStuck(window.scrollY > 64);
+    };
+
+    syncTopbar();
+    window.addEventListener("scroll", syncTopbar, { passive: true });
+
+    return () => window.removeEventListener("scroll", syncTopbar);
+  }, []);
+
   return (
     <div className="site-shell">
-      <header className="topbar">
-        <a className="brand" href="#mind-interface" aria-label="Go to home">
-          <span className="brand-mark"></span>
-          <span className="brand-copy">
-            <strong>Emanuel Martinez</strong>
-            <small>Neural Fullstack System</small>
-          </span>
-        </a>
-        <nav className="topnav" aria-label="Primary">
-          {navItems.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={activeSection === item.id ? "is-active" : ""}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </header>
+      <div className={`topbar-shell ${isTopbarStuck ? "is-stuck" : ""}`}>
+        <header className={`topbar ${isTopbarStuck ? "is-stuck" : ""}`}>
+          <a className="brand" href="#mind-interface" aria-label="Go to home">
+            <span className="brand-mark"></span>
+            <span className="brand-copy">
+              <strong>Emanuel Martinez</strong>
+              <small>Neural Fullstack System</small>
+            </span>
+          </a>
+          <nav className="topnav" aria-label="Primary">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={activeSection === item.id ? "is-active" : ""}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </header>
+      </div>
 
       <main>
         <section
@@ -76,45 +86,64 @@ function App() {
           <div className="section-frame">
             <div className="section-ornament section-ornament-left" aria-hidden="true"></div>
             <div className="section-ornament section-ornament-right" aria-hidden="true"></div>
+            <div className="hero-brain" aria-hidden="true">
+              <span className="brain-orbit brain-orbit-1"></span>
+              <span className="brain-orbit brain-orbit-2"></span>
+              <span className="brain-core"></span>
+              <span className="brain-node brain-node-1"></span>
+              <span className="brain-node brain-node-2"></span>
+              <span className="brain-node brain-node-3"></span>
+              <span className="brain-node brain-node-4"></span>
+              <span className="brain-node brain-node-5"></span>
+            </div>
             <SectionIntro label="Mind Interface" />
 
-            <div className="hero-copy">
-              <p className="microcopy">Welcome to</p>
-              <h1>
-                EMANUEL&apos;S
-                <br />
-                NEURAL SYSTEM
-              </h1>
-              <p className="subhero">Developer Portfolio</p>
-              <p className="lede">
-                Building product-grade systems from interface to infrastructure,
-                with a fullstack mindset shaped by frontend clarity, backend
-                logic, data precision, and delivery discipline.
-              </p>
-            </div>
+            <div className="hero-main">
+              <div className="hero-title-block">
+                <p className="microcopy">Neural entry point</p>
+                <h1>
+                  EMANUEL&apos;S
+                  <br />
+                  FULLSTACK
+                  <br />
+                  SIGNAL
+                </h1>
+              </div>
 
-            <div className="hero-actions">
-              <a className="button button-primary" href="#mental-lab">
-                Enter Mental Lab
-              </a>
-              <a className="button button-ghost" href="#connection-protocol">
-                Open Hiring Channel
-              </a>
-            </div>
+              <div className="hero-side">
+                <p className="subhero">
+                  A futuristic portfolio engineered to feel like a live system.
+                </p>
+                <p className="lede">
+                  I build web products from interface to infrastructure with a
+                  systems-first mindset, sharp frontend execution, and backend
+                  logic that stays clear under complexity.
+                </p>
 
-            <div className="signal-strip" aria-label="Profile highlights">
-              <div>
-                <span className="signal-label">Current Role</span>
-                <p>Fullstack Product Builder</p>
+                <div className="hero-actions">
+                  <a className="button button-primary" href="#mental-lab">
+                    Enter Mental Lab
+                  </a>
+                  <a className="button button-ghost" href="#connection-protocol">
+                    Open Hiring Channel
+                  </a>
+                </div>
               </div>
-              <div>
-                <span className="signal-label">Primary Focus</span>
-                <p>Scalable web systems and polished UX</p>
-              </div>
-              <div>
-                <span className="signal-label">Operating Mode</span>
-                <p>Interface, logic, data, deployment</p>
-              </div>
+            </div>
+          </div>
+
+          <div className="hero-tail signal-strip" aria-label="Profile highlights">
+            <div>
+              <span className="signal-label">Current Role</span>
+              <p>Fullstack Product Builder</p>
+            </div>
+            <div>
+              <span className="signal-label">Primary Focus</span>
+              <p>Scalable web systems and polished UX</p>
+            </div>
+            <div>
+              <span className="signal-label">Operating Mode</span>
+              <p>Interface, logic, data, deployment</p>
             </div>
           </div>
         </section>
