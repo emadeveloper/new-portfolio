@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Navbar2 } from "./components/Navbar2";
 import { SectionIntro } from "./components/SectionIntro";
 import {
   capabilities,
@@ -54,28 +55,11 @@ function App() {
 
   return (
     <div className="site-shell">
-      <div className={`topbar-shell ${isTopbarStuck ? "is-stuck" : ""}`}>
-        <header className={`topbar ${isTopbarStuck ? "is-stuck" : ""}`}>
-          <a className="brand" href="#mind-interface" aria-label="Go to home">
-            <span className="brand-mark"></span>
-            <span className="brand-copy">
-              <strong>Emanuel Martinez</strong>
-              <small>Neural Fullstack System</small>
-            </span>
-          </a>
-          <nav className="topnav" aria-label="Primary">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={activeSection === item.id ? "is-active" : ""}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </header>
-      </div>
+      <Navbar2
+        activeSection={activeSection}
+        isTopbarStuck={isTopbarStuck}
+        navItems={navItems}
+      />
 
       <main>
         <section
