@@ -7,9 +7,7 @@
   --text: #eaf2ff;
   --muted: #97a4c4;
   --cyan: #8ec8ff;
-  --cyan-soft: rgba(142, 200, 255, 0.14);
   --magenta: #e975c6;
-  --magenta-soft: rgba(233, 117, 198, 0.1);
   --shadow: 0 24px 90px rgba(0, 0, 0, 0.42);
   --radius: 30px;
 }
@@ -142,7 +140,7 @@ p {
 }
 
 .topnav a {
-  transition: color 180ms ease, opacity 180ms ease;
+  transition: color 180ms ease;
 }
 
 .topnav a:hover,

@@ -1,0 +1,385 @@
+import { useEffect, useMemo, useState } from "react";
+
+const navItems = [
+  { id: "core-identity", label: "Identity" },
+  { id: "mental-lab", label: "Lab" },
+  { id: "neural-stack", label: "Stack" },
+  { id: "signal-feed", label: "Signal" },
+  { id: "connection-protocol", label: "Connect" },
+];
+
+const identityRows = [
+  {
+    index: "01",
+    title: "Structured Thinking",
+    text: "I break problems into flows, boundaries, and responsibilities before writing code, so implementations stay scalable instead of reactive.",
+  },
+  {
+    index: "02",
+    title: "Product Awareness",
+    text: "I care about user clarity, not just technical correctness. Good software has to make sense on screen and in code.",
+  },
+  {
+    index: "03",
+    title: "Delivery Discipline",
+    text: "I value maintainability, performance, and predictable release habits because quality is part of the user experience.",
+  },
+];
+
+const labEntries = [
+  {
+    experiment: "Experiment 01",
+    label: "Fullstack Platform",
+    title: "Product Operations Dashboard",
+    text: "Designed an internal workspace to centralize workflows, operational visibility, and role-based actions across the team.",
+    points: [
+      "Scope: frontend architecture, API integration, UX flows",
+      "Challenge: keep dense information readable and fast",
+      "Outcome: clearer workflows and stronger operational control",
+    ],
+  },
+  {
+    experiment: "Experiment 02",
+    label: "Service Layer",
+    title: "Authentication and Access System",
+    text: "Built a secure entry layer with session control, protected routes, and differentiated access based on system responsibilities.",
+    points: [
+      "Scope: auth flows, backend validation, route protection",
+      "Challenge: keep security strong without harming UX",
+      "Outcome: safer navigation and cleaner permission logic",
+    ],
+  },
+  {
+    experiment: "Experiment 03",
+    label: "Data Engine",
+    title: "Real-Time Monitoring Interface",
+    text: "Created a live data experience for status tracking, activity awareness, and operational decision-making.",
+    points: [
+      "Scope: UI state design, real-time sync, dashboard behavior",
+      "Challenge: avoid noise while exposing useful change",
+      "Outcome: higher visibility and quicker reaction loops",
+    ],
+  },
+];
+
+const capabilities = [
+  {
+    index: "01",
+    title: "Interface Systems",
+    text: "Responsive product UIs, component structure, state handling, and frontend experiences that stay clear under complexity.",
+  },
+  {
+    index: "02",
+    title: "Backend Logic",
+    text: "APIs, validations, business rules, service organization, and application flows that remain explicit and testable.",
+  },
+  {
+    index: "03",
+    title: "Data Modeling",
+    text: "Relational thinking, query clarity, and data structures built around long-term maintainability.",
+  },
+  {
+    index: "04",
+    title: "Delivery Quality",
+    text: "Performance awareness, testing habits, deployment discipline, and engineering standards that protect the product over time.",
+  },
+];
+
+const signals = [
+  { index: "A", title: "Readable Architecture", text: "Clear responsibilities across screens, services, and data flow." },
+  { index: "B", title: "Performance Awareness", text: "Interfaces should stay responsive and services should stay predictable." },
+  { index: "C", title: "Testing Mindset", text: "Critical logic deserves confidence before release, not after failure." },
+  { index: "D", title: "Delivery Discipline", text: "Clean handoffs, reliable deploys, and attention to production reality." },
+];
+
+function SectionIntro({ label }) {
+  return (
+    <div className="section-intro">
+      <span className="intro-line"></span>
+      <p className="eyebrow">{label}</p>
+      <span className="intro-line"></span>
+    </div>
+  );
+}
+
+function App() {
+  const sectionIds = useMemo(
+    () => ["mind-interface", ...navItems.map((item) => item.id)],
+    []
+  );
+  const [activeSection, setActiveSection] = useState("mind-interface");
+  const [visibleSections, setVisibleSections] = useState(() => new Set(["mind-interface"]));
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("[data-section]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          setVisibleSections((current) => {
+            const next = new Set(current);
+            next.add(entry.target.id);
+            return next;
+          });
+          setActiveSection(entry.target.id);
+        });
+      },
+      {
+        threshold: 0.28,
+        rootMargin: "-10% 0px -10% 0px",
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="site-shell">
+      <header className="topbar">
+        <a className="brand" href="#mind-interface" aria-label="Go to home">
+          <span className="brand-mark"></span>
+          <span className="brand-copy">
+            <strong>Emanuel Martinez</strong>
+            <small>Neural Fullstack System</small>
+          </span>
+        </a>
+        <nav className="topnav" aria-label="Primary">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={activeSection === item.id ? "is-active" : ""}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <main>
+        <section
+          className={`section hero ${visibleSections.has("mind-interface") ? "is-visible" : ""}`}
+          id="mind-interface"
+          data-section
+        >
+          <div className="section-frame">
+            <div className="section-ornament section-ornament-left" aria-hidden="true"></div>
+            <div className="section-ornament section-ornament-right" aria-hidden="true"></div>
+            <SectionIntro label="Mind Interface" />
+
+            <div className="hero-copy">
+              <p className="microcopy">Welcome to</p>
+              <h1>
+                EMANUEL&apos;S
+                <br />
+                NEURAL SYSTEM
+              </h1>
+              <p className="subhero">Developer Portfolio</p>
+              <p className="lede">
+                Building product-grade systems from interface to infrastructure,
+                with a fullstack mindset shaped by frontend clarity, backend
+                logic, data precision, and delivery discipline.
+              </p>
+            </div>
+
+            <div className="hero-actions">
+              <a className="button button-primary" href="#mental-lab">
+                Enter Mental Lab
+              </a>
+              <a className="button button-ghost" href="#connection-protocol">
+                Open Hiring Channel
+              </a>
+            </div>
+
+            <div className="signal-strip" aria-label="Profile highlights">
+              <div>
+                <span className="signal-label">Current Role</span>
+                <p>Fullstack Product Builder</p>
+              </div>
+              <div>
+                <span className="signal-label">Primary Focus</span>
+                <p>Scalable web systems and polished UX</p>
+              </div>
+              <div>
+                <span className="signal-label">Operating Mode</span>
+                <p>Interface, logic, data, deployment</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={`section identity-section ${visibleSections.has("core-identity") ? "is-visible" : ""}`}
+          id="core-identity"
+          data-section
+        >
+          <div className="section-frame">
+            <SectionIntro label="Core Identity" />
+
+            <div className="section-heading">
+              <h2>THE WAY I THINK IS THE PRODUCT I BRING TO A TEAM.</h2>
+              <p>
+                I like software that feels coherent end to end. The interface
+                should guide action, the backend should stay predictable, and
+                the release process should reduce friction instead of adding it.
+              </p>
+            </div>
+
+            <div className="integral-list">
+              {identityRows.map((row) => (
+                <article className="integral-row" key={row.index}>
+                  <span className="row-index">{row.index}</span>
+                  <h3>{row.title}</h3>
+                  <p>{row.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={`section lab-section ${visibleSections.has("mental-lab") ? "is-visible" : ""}`}
+          id="mental-lab"
+          data-section
+        >
+          <div className="section-frame">
+            <SectionIntro label="Mental Lab" />
+
+            <div className="section-heading">
+              <h2>EACH PROJECT IS A DEPLOYED THOUGHT PROCESS.</h2>
+              <p>
+                I do not present projects as screenshots. I present them as
+                technical decisions translated into useful systems.
+              </p>
+            </div>
+
+            <div className="lab-stream">
+              {labEntries.map((entry) => (
+                <article className="lab-entry" key={entry.title}>
+                  <div className="entry-topline">
+                    <span>{entry.experiment}</span>
+                    <span>{entry.label}</span>
+                  </div>
+                  <h3>{entry.title}</h3>
+                  <p>{entry.text}</p>
+                  <div className="entry-points">
+                    {entry.points.map((point) => (
+                      <p key={point}>{point}</p>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={`section stack-section ${visibleSections.has("neural-stack") ? "is-visible" : ""}`}
+          id="neural-stack"
+          data-section
+        >
+          <div className="section-frame">
+            <SectionIntro label="Neural Stack" />
+
+            <div className="section-heading">
+              <h2>MY STACK IS ORGANIZED BY CAPABILITY, NOT BY LOGO COLLECTION.</h2>
+              <p>
+                I prefer technologies that help build coherent products,
+                maintainable services, and dependable delivery cycles.
+              </p>
+            </div>
+
+            <div className="capability-grid">
+              {capabilities.map((capability) => (
+                <article className="capability" key={capability.index}>
+                  <span className="row-index">{capability.index}</span>
+                  <h3>{capability.title}</h3>
+                  <p>{capability.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={`section signal-section ${visibleSections.has("signal-feed") ? "is-visible" : ""}`}
+          id="signal-feed"
+          data-section
+        >
+          <div className="section-frame">
+            <SectionIntro label="Signal Feed" />
+
+            <div className="section-heading">
+              <h2>TECHNICAL CREDIBILITY SHOULD BE VISIBLE, NOT IMPLIED.</h2>
+              <p>
+                These are the quality signals I care about when building
+                software and the standards I aim to bring into every team.
+              </p>
+            </div>
+
+            <div className="integral-list">
+              {signals.map((signal) => (
+                <article className="integral-row" key={signal.index}>
+                  <span className="row-index">{signal.index}</span>
+                  <h3>{signal.title}</h3>
+                  <p>{signal.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="current-state">
+              <span className="signal-label">Current State</span>
+              <h3>Actively sharpening fullstack depth.</h3>
+              <p>
+                Focused on building stronger product systems, improving frontend
+                precision, and writing backend code that scales with confidence.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={`section contact-section ${visibleSections.has("connection-protocol") ? "is-visible" : ""}`}
+          id="connection-protocol"
+          data-section
+        >
+          <div className="section-frame">
+            <SectionIntro label="Connection Protocol" />
+
+            <div className="section-heading">
+              <h2>LOOKING FOR A FULLSTACK DEVELOPER WHO THINKS BEYOND ISOLATED TASKS.</h2>
+              <p>
+                I am interested in product teams where technical quality,
+                thoughtful execution, and long-term growth matter.
+              </p>
+            </div>
+
+            <div className="contact-grid">
+              <div>
+                <span className="signal-label">Preferred Channel</span>
+                <a className="contact-link" href="mailto:emanuel@example.com">
+                  emanuel@example.com
+                </a>
+              </div>
+              <div>
+                <span className="signal-label">Hiring Context</span>
+                <p>Frontend-heavy fullstack roles, product teams, growth environments.</p>
+              </div>
+              <div>
+                <span className="signal-label">Availability</span>
+                <p>Open to new opportunities and technical conversations.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
+
+export default App;
