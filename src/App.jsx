@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { Navbar2 } from "./components/Navbar2";
+import { useEffect, useState } from "react";
+import { Navbar } from "./components/Navbar";
 import { ContactSection } from "./components/ContactSection";
 import { HeroSection } from "./components/HeroSection";
 import { IdentitySection } from "./components/IdentitySection";
@@ -29,11 +29,17 @@ function App() {
           }
 
           setVisibleSections((current) => {
+            if (current.has(entry.target.id)) {
+              return current;
+            }
+
             const next = new Set(current);
             next.add(entry.target.id);
             return next;
           });
-          setActiveSection(entry.target.id);
+          setActiveSection((current) =>
+            current === entry.target.id ? current : entry.target.id
+          );
         });
       },
       {
@@ -49,7 +55,8 @@ function App() {
 
   useEffect(() => {
     const syncTopbar = () => {
-      setIsTopbarStuck(window.scrollY > 64);
+      const nextValue = window.scrollY > 64;
+      setIsTopbarStuck((current) => (current === nextValue ? current : nextValue));
     };
 
     syncTopbar();
@@ -60,7 +67,7 @@ function App() {
 
   return (
     <div className="site-shell">
-      <Navbar2
+      <Navbar
         activeSection={activeSection}
         isTopbarStuck={isTopbarStuck}
         navItems={navItems}
