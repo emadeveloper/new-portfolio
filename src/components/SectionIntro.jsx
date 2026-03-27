@@ -1,20 +1,4 @@
-import {
-  Activity,
-  Brain,
-  Cpu,
-  Fingerprint,
-  FlaskConical,
-  SendHorizontal,
-} from "lucide-react";
-
-const sectionIcons = {
-  mind: Brain,
-  identity: Fingerprint,
-  lab: FlaskConical,
-  stack: Cpu,
-  signal: Activity,
-  contact: SendHorizontal,
-};
+import { sectionIcons } from "./sectionIcons";
 
 export function SectionIntro({ icon, label }) {
   const Icon = sectionIcons[icon];

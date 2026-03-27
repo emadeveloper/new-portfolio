@@ -197,6 +197,7 @@ p {
   display: inline-flex;
   align-items: center;
   justify-self: end;
+  gap: 0.75rem;
 }
 
 .language-toggle {
@@ -250,11 +251,35 @@ p {
   background: rgba(134, 210, 255, 0.18);
 }
 
+.topbar2-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(134, 210, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(12, 29, 55, 0.92), rgba(7, 16, 29, 0.98)),
+    rgba(6, 14, 27, 0.94);
+  color: #e7f5ff;
+  cursor: pointer;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(134, 210, 255, 0.05),
+    0 0 18px rgba(84, 170, 255, 0.08);
+}
+
+.topbar2-menu-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
 .topbar2-nav a {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.48rem;
   min-height: 42px;
   padding: 0 0.95rem;
   color: rgba(219, 239, 255, 0.74);
@@ -267,6 +292,13 @@ p {
     color 180ms ease,
     text-shadow 180ms ease,
     opacity 180ms ease;
+}
+
+.topbar2-nav-icon {
+  width: 0.92rem;
+  height: 0.92rem;
+  color: currentColor;
+  opacity: 0.9;
 }
 
 .topbar2-nav a::before,
@@ -1365,25 +1397,73 @@ h3 {
   }
 
   .topbar2-rail {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 0.7rem;
-    padding: 0.4rem 0.55rem 0.55rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-items: stretch;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.65rem;
   }
 
   .topbar2-brand {
+    min-width: 0;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
     clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
   }
 
   .topbar2-nav {
-    flex-wrap: wrap;
-    gap: 0.1rem 0.35rem;
+    position: absolute;
+    top: calc(100% + 0.45rem);
+    left: 0.65rem;
+    right: 0.65rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    padding: 0.7rem;
+    border: 1px solid rgba(134, 210, 255, 0.14);
+    background:
+      linear-gradient(180deg, rgba(10, 24, 45, 0.96), rgba(6, 14, 27, 0.98)),
+      rgba(6, 14, 27, 0.98);
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease,
+      visibility 160ms ease;
+  }
+
+  .topbar2-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .topbar2-nav a {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0 0.95rem;
+    border: 1px solid rgba(134, 210, 255, 0.08);
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  .topbar2-nav a:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
 
   .topbar2-controls {
-    justify-self: center;
+    justify-self: end;
+    align-items: center;
+  }
+
+  .topbar2-menu-toggle {
+    display: inline-flex;
   }
 
   .topbar {
@@ -1529,13 +1609,33 @@ h3 {
   }
 
   .topbar2-brand-copy {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
   }
 
-  .topbar2-nav a {
-    padding: 0 0.7rem;
-    font-size: 0.7rem;
+  .topbar2-brand {
+    min-height: 50px;
+    padding-right: 0.8rem;
+  }
+
+  .topbar2-brand-core {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .language-toggle {
+    min-height: 40px;
+    padding: 0 0.75rem;
+    font-size: 0.66rem;
+  }
+
+  .topbar2-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar2-nav a:last-child:nth-child(odd) {
+    grid-column: auto;
   }
 
   .site-shell {
