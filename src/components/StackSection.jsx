@@ -8,7 +8,7 @@ export function StackSection({ isVisible, stack }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label={stack.intro} />
+        <SectionIntro icon="stack" label={stack.intro} />
 
         <div className="section-heading">
           <h2>{stack.title}</h2>

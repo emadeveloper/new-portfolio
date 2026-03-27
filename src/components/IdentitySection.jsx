@@ -8,7 +8,7 @@ export function IdentitySection({ identity, isVisible }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label={identity.intro} />
+        <SectionIntro icon="identity" label={identity.intro} />
 
         <div className="section-heading">
           <h2>{identity.title}</h2>

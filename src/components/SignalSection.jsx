@@ -8,7 +8,7 @@ export function SignalSection({ isVisible, signal }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label={signal.intro} />
+        <SectionIntro icon="signal" label={signal.intro} />
 
         <div className="section-heading">
           <h2>{signal.title}</h2>

@@ -617,6 +617,20 @@ p {
   background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
 }
 
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.section-intro-icon {
+  width: 1.12rem;
+  height: 1.12rem;
+  color: var(--cyan);
+  filter: drop-shadow(0 0 8px rgba(142, 200, 255, 0.18));
+}
+
 .eyebrow,
 .signal-label,
 .microcopy,
@@ -633,7 +647,6 @@ p {
 .contact-grid,
 .signal-strip,
 .integral-list,
-.lab-stream,
 .capability-grid {
   position: relative;
   z-index: 1;
@@ -772,7 +785,6 @@ h3 {
 .lab-entry {
   position: relative;
   display: grid;
-  justify-items: center;
   gap: 0.9rem;
   padding: 1.65rem 1rem;
 }
@@ -803,6 +815,268 @@ h3 {
 .entry-points {
   display: grid;
   gap: 0.5rem;
+}
+
+.lab-stream {
+  width: min(100%, 1100px);
+}
+
+.lab-entry {
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  grid-template-areas:
+    "head visual"
+    "body visual"
+    "foot visual";
+  align-items: start;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(1.35rem, 3vw, 2rem);
+}
+
+.lab-entry.is-reversed {
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  grid-template-areas:
+    "visual head"
+    "visual body"
+    "visual foot";
+}
+
+.lab-head {
+  grid-area: head;
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  text-align: left;
+}
+
+.lab-body {
+  grid-area: body;
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  text-align: left;
+}
+
+.lab-foot {
+  grid-area: foot;
+  display: grid;
+  justify-items: start;
+  gap: 1rem;
+  text-align: left;
+}
+
+.lab-head h3,
+.lab-body > p,
+.lab-body .entry-points p {
+  margin: 0;
+  text-align: left;
+}
+
+.lab-body > p,
+.lab-body .entry-points p {
+  max-width: 58ch;
+}
+
+.lab-entry-kicker {
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.35;
+}
+
+.lab-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.lab-tech-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(142, 200, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.lab-action-primary {
+  min-width: 170px;
+}
+
+.lab-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 48px;
+  padding: 0 1rem;
+  border: 1px solid rgba(142, 200, 255, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.lab-github-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(142, 200, 255, 0.32);
+  background: rgba(142, 200, 255, 0.05);
+}
+
+.lab-github-link svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.entry-points p {
+  position: relative;
+  padding-left: 1.05rem;
+}
+
+.entry-points p::before {
+  content: "";
+  position: absolute;
+  top: 0.72rem;
+  left: 0;
+  width: 0.5rem;
+  height: 1px;
+  background: rgba(142, 200, 255, 0.5);
+}
+
+.lab-visual {
+  grid-area: visual;
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border: 1px solid rgba(142, 200, 255, 0.14);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(128, 182, 255, 0.08), transparent 45%),
+    linear-gradient(180deg, rgba(10, 19, 35, 0.96), rgba(5, 12, 22, 0.98));
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+}
+
+.lab-visual-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.56;
+}
+
+.lab-visual-frame,
+.lab-visual-grid,
+.lab-visual-orbit,
+.lab-visual-panel {
+  position: absolute;
+  inset: 0;
+}
+
+.lab-visual-grid {
+  background:
+    linear-gradient(rgba(142, 200, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 200, 255, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.42;
+}
+
+.lab-visual-orbit::before,
+.lab-visual-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 18% 12%;
+  border: 1px solid rgba(142, 200, 255, 0.18);
+  transform: skewX(-14deg);
+}
+
+.lab-visual-orbit::after {
+  inset: 28% 18%;
+  border-color: rgba(233, 117, 198, 0.16);
+}
+
+.lab-visual-panel {
+  inset: auto 1rem 1rem 1rem;
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 1.05rem;
+  background: linear-gradient(180deg, rgba(6, 14, 26, 0.72), rgba(6, 14, 26, 0.9));
+  border: 1px solid rgba(142, 200, 255, 0.16);
+}
+
+.lab-visual-panel span,
+.lab-visual-panel small {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lab-visual-panel span {
+  color: var(--cyan);
+  font-size: 0.72rem;
+}
+
+.lab-visual-panel strong {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--text);
+}
+
+.lab-visual-panel small {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.lab-entry::before {
+  content: "";
+  position: absolute;
+  top: 1.4rem;
+  bottom: 1.4rem;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(180deg, transparent, rgba(142, 200, 255, 0.52), transparent);
+  opacity: 0.7;
+}
+
+.lab-entry:hover .lab-visual,
+.lab-entry:focus-within .lab-visual {
+  border-color: rgba(142, 200, 255, 0.26);
+}
+
+.lab-entry:hover .lab-visual-grid,
+.lab-entry:focus-within .lab-visual-grid {
+  opacity: 0.62;
+}
+
+.lab-entry-cyan .lab-visual {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(128, 182, 255, 0.11), transparent 45%),
+    linear-gradient(180deg, rgba(10, 19, 35, 0.96), rgba(5, 12, 22, 0.98));
+}
+
+.lab-entry-magenta .lab-visual {
+  background:
+    radial-gradient(circle at 52% 46%, rgba(233, 117, 198, 0.12), transparent 44%),
+    linear-gradient(180deg, rgba(20, 14, 33, 0.96), rgba(7, 12, 22, 0.98));
+}
+
+.lab-entry-violet .lab-visual {
+  background:
+    radial-gradient(circle at 54% 50%, rgba(142, 200, 255, 0.08), transparent 42%),
+    radial-gradient(circle at 38% 34%, rgba(139, 117, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(11, 14, 34, 0.96), rgba(5, 12, 22, 0.98));
 }
 
 .capability-grid,
@@ -1072,11 +1346,17 @@ h3 {
     rgba(8, 12, 24, 0.75);
 }
 
-.lab-section .section-frame,
 .contact-section .section-frame {
   background:
     linear-gradient(180deg, rgba(142, 200, 255, 0.06), transparent 28%),
     rgba(8, 12, 24, 0.75);
+}
+
+.lab-section .section-frame {
+  background:
+    radial-gradient(circle at 50% 18%, rgba(116, 196, 255, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(88, 168, 255, 0.08), transparent 32%),
+    rgba(7, 13, 27, 0.82);
 }
 
 @media (max-width: 920px) {
@@ -1181,6 +1461,61 @@ h3 {
     width: min(58vw, 330px);
     transform: translateX(-50%);
     opacity: 0.3;
+  }
+
+  .lab-entry {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "visual"
+      "body"
+      "foot";
+  }
+
+  .lab-entry.is-reversed {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "visual"
+      "body"
+      "foot";
+  }
+
+  .lab-head,
+  .lab-body,
+  .lab-foot {
+    order: 2;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .lab-visual {
+    order: 1;
+  }
+
+  .lab-head h3,
+  .lab-body > p,
+  .lab-body .entry-points p {
+    text-align: center;
+  }
+
+  .entry-points p {
+    padding-left: 0;
+  }
+
+  .entry-points p::before,
+  .lab-entry::before {
+    display: none;
+  }
+
+  .lab-tech-stack,
+  .lab-actions {
+    justify-content: center;
+  }
+
+  .lab-visual {
+    min-height: 260px;
+    width: 100%;
   }
 }
 

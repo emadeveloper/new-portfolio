@@ -1,8 +1,31 @@
-export function SectionIntro({ label }) {
+import {
+  Activity,
+  Brain,
+  Cpu,
+  Fingerprint,
+  FlaskConical,
+  SendHorizontal,
+} from "lucide-react";
+
+const sectionIcons = {
+  mind: Brain,
+  identity: Fingerprint,
+  lab: FlaskConical,
+  stack: Cpu,
+  signal: Activity,
+  contact: SendHorizontal,
+};
+
+export function SectionIntro({ icon, label }) {
+  const Icon = sectionIcons[icon];
+
   return (
     <div className="section-intro">
       <span className="intro-line"></span>
-      <p className="eyebrow">{label}</p>
+      <p className="eyebrow">
+        {Icon ? <Icon className="section-intro-icon" aria-hidden="true" strokeWidth={1.8} /> : null}
+        <span>{label}</span>
+      </p>
       <span className="intro-line"></span>
     </div>
   );

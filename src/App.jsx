@@ -25,6 +25,32 @@ function App() {
 
   useEffect(() => {
     const sections = document.querySelectorAll("[data-section]");
+    const syncSections = () => {
+      const viewportHeight = window.innerHeight;
+      const nextVisible = new Set(["mind-interface"]);
+      let currentActive = "mind-interface";
+      let closestOffset = Number.POSITIVE_INFINITY;
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const intersectsViewport =
+          rect.top < viewportHeight * 0.82 && rect.bottom > viewportHeight * 0.18;
+
+        if (intersectsViewport || rect.top < viewportHeight * 0.18) {
+          nextVisible.add(section.id);
+        }
+
+        const distanceToTop = Math.abs(rect.top);
+        if (distanceToTop < closestOffset) {
+          closestOffset = distanceToTop;
+          currentActive = section.id;
+        }
+      });
+
+      setVisibleSections(nextVisible);
+      setActiveSection(currentActive);
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -53,8 +79,13 @@ function App() {
     );
 
     sections.forEach((section) => observer.observe(section));
+    syncSections();
+    window.addEventListener("hashchange", syncSections);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("hashchange", syncSections);
+    };
   }, []);
 
   useEffect(() => {

@@ -8,7 +8,7 @@ export function ContactSection({ contact, isVisible }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label={contact.intro} />
+        <SectionIntro icon="contact" label={contact.intro} />
 
         <div className="section-heading">
           <h2>{contact.title}</h2>

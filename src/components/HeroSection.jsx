@@ -20,7 +20,7 @@ export function HeroSection({ hero, isVisible }) {
           <span className="brain-node brain-node-4"></span>
           <span className="brain-node brain-node-5"></span>
         </div>
-        <SectionIntro label={hero.intro} />
+        <SectionIntro icon="mind" label={hero.intro} />
 
         <div className="hero-main">
           <div className="hero-title-block">
