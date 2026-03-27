@@ -6,18 +6,22 @@ import { IdentitySection } from "./components/IdentitySection";
 import { LabSection } from "./components/LabSection";
 import { SignalSection } from "./components/SignalSection";
 import { StackSection } from "./components/StackSection";
-import {
-  capabilities,
-  identityRows,
-  labEntries,
-  navItems,
-  signals,
-} from "./content/portfolioContent";
+import { portfolioContent } from "./content/portfolioContent";
 
 function App() {
+  const [language, setLanguage] = useState(() => {
+    const storedLanguage = window.localStorage.getItem("portfolio-language");
+    return storedLanguage === "es" ? "es" : "en";
+  });
   const [activeSection, setActiveSection] = useState("mind-interface");
   const [visibleSections, setVisibleSections] = useState(() => new Set(["mind-interface"]));
   const [isTopbarStuck, setIsTopbarStuck] = useState(false);
+  const content = portfolioContent[language];
+
+  useEffect(() => {
+    window.localStorage.setItem("portfolio-language", language);
+    document.documentElement.lang = language;
+  }, [language]);
 
   useEffect(() => {
     const sections = document.querySelectorAll("[data-section]");
@@ -70,28 +74,27 @@ function App() {
       <Navbar
         activeSection={activeSection}
         isTopbarStuck={isTopbarStuck}
-        navItems={navItems}
+        language={language}
+        navbar={content.navbar}
+        navItems={content.navItems}
+        onToggleLanguage={() =>
+          setLanguage((current) => (current === "en" ? "es" : "en"))
+        }
       />
 
       <main>
-        <HeroSection isVisible={visibleSections.has("mind-interface")} />
+        <HeroSection hero={content.hero} isVisible={visibleSections.has("mind-interface")} />
         <IdentitySection
-          identityRows={identityRows}
+          identity={content.identity}
           isVisible={visibleSections.has("core-identity")}
         />
-        <LabSection
-          isVisible={visibleSections.has("mental-lab")}
-          labEntries={labEntries}
+        <LabSection isVisible={visibleSections.has("mental-lab")} lab={content.lab} />
+        <StackSection isVisible={visibleSections.has("neural-stack")} stack={content.stack} />
+        <SignalSection isVisible={visibleSections.has("signal-feed")} signal={content.signal} />
+        <ContactSection
+          contact={content.contact}
+          isVisible={visibleSections.has("connection-protocol")}
         />
-        <StackSection
-          capabilities={capabilities}
-          isVisible={visibleSections.has("neural-stack")}
-        />
-        <SignalSection
-          isVisible={visibleSections.has("signal-feed")}
-          signals={signals}
-        />
-        <ContactSection isVisible={visibleSections.has("connection-protocol")} />
       </main>
     </div>
   );

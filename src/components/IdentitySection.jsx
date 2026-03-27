@@ -1,6 +1,6 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function IdentitySection({ isVisible, identityRows }) {
+export function IdentitySection({ identity, isVisible }) {
   return (
     <section
       className={`section identity-section ${isVisible ? "is-visible" : ""}`}
@@ -8,19 +8,15 @@ export function IdentitySection({ isVisible, identityRows }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label="Core Identity" />
+        <SectionIntro label={identity.intro} />
 
         <div className="section-heading">
-          <h2>THE WAY I THINK IS THE PRODUCT I BRING TO A TEAM.</h2>
-          <p>
-            I like software that feels coherent end to end. The interface should
-            guide action, the backend should stay predictable, and the release
-            process should reduce friction instead of adding it.
-          </p>
+          <h2>{identity.title}</h2>
+          <p>{identity.description}</p>
         </div>
 
         <div className="integral-list">
-          {identityRows.map((row) => (
+          {identity.rows.map((row) => (
             <article className="integral-row" key={row.index}>
               <span className="row-index">{row.index}</span>
               <h3>{row.title}</h3>

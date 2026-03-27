@@ -1,6 +1,6 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function StackSection({ capabilities, isVisible }) {
+export function StackSection({ isVisible, stack }) {
   return (
     <section
       className={`section stack-section ${isVisible ? "is-visible" : ""}`}
@@ -8,18 +8,15 @@ export function StackSection({ capabilities, isVisible }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label="Neural Stack" />
+        <SectionIntro label={stack.intro} />
 
         <div className="section-heading">
-          <h2>MY STACK IS ORGANIZED BY CAPABILITY, NOT BY LOGO COLLECTION.</h2>
-          <p>
-            I prefer technologies that help build coherent products, maintainable
-            services, and dependable delivery cycles.
-          </p>
+          <h2>{stack.title}</h2>
+          <p>{stack.description}</p>
         </div>
 
         <div className="capability-grid">
-          {capabilities.map((capability) => (
+          {stack.capabilities.map((capability) => (
             <article className="capability" key={capability.index}>
               <span className="row-index">{capability.index}</span>
               <h3>{capability.title}</h3>

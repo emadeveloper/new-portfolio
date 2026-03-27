@@ -80,7 +80,7 @@ p {
 .topbar2-rail {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: clamp(1.2rem, 2vw, 2rem);
   min-height: 72px;
@@ -109,7 +109,8 @@ p {
 }
 
 .topbar2-brand,
-.topbar2-nav {
+.topbar2-nav,
+.topbar2-controls {
   position: relative;
   z-index: 2;
 }
@@ -190,6 +191,63 @@ p {
   gap: clamp(0.3rem, 0.8vw, 0.7rem);
   min-height: 56px;
   padding: 0 0.65rem;
+}
+
+.topbar2-controls {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+}
+
+.language-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(134, 210, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(12, 29, 55, 0.92), rgba(7, 16, 29, 0.98)),
+    rgba(6, 14, 27, 0.94);
+  color: rgba(219, 239, 255, 0.56);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(134, 210, 255, 0.05),
+    0 0 18px rgba(84, 170, 255, 0.08);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.language-toggle:hover {
+  border-color: rgba(134, 210, 255, 0.26);
+  box-shadow:
+    inset 0 0 0 1px rgba(134, 210, 255, 0.08),
+    0 0 22px rgba(84, 170, 255, 0.14);
+}
+
+.language-toggle span {
+  position: relative;
+  z-index: 1;
+}
+
+.language-toggle .is-active {
+  color: #e7f5ff;
+  text-shadow: 0 0 14px rgba(105, 187, 255, 0.38);
+}
+
+.language-toggle-divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(134, 210, 255, 0.18);
 }
 
 .topbar2-nav a {
@@ -1042,6 +1100,10 @@ h3 {
   .topbar2-nav {
     flex-wrap: wrap;
     gap: 0.1rem 0.35rem;
+  }
+
+  .topbar2-controls {
+    justify-self: center;
   }
 
   .topbar {

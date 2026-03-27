@@ -1,6 +1,6 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function HeroSection({ isVisible }) {
+export function HeroSection({ hero, isVisible }) {
   return (
     <section
       className={`section hero ${isVisible ? "is-visible" : ""}`}
@@ -20,55 +20,43 @@ export function HeroSection({ isVisible }) {
           <span className="brain-node brain-node-4"></span>
           <span className="brain-node brain-node-5"></span>
         </div>
-        <SectionIntro label="Mind Interface" />
+        <SectionIntro label={hero.intro} />
 
         <div className="hero-main">
           <div className="hero-title-block">
-            <p className="microcopy">Neural entry point</p>
+            <p className="microcopy">{hero.microcopy}</p>
             <h1>
-              EMANUEL&apos;S
+              {hero.title[0]}
               <br />
-              FULLSTACK
+              {hero.title[1]}
               <br />
-              SIGNAL
+              {hero.title[2]}
             </h1>
           </div>
 
           <div className="hero-side">
-            <p className="subhero">
-              A futuristic portfolio engineered to feel like a live system.
-            </p>
-            <p className="lede">
-              I build web products from interface to infrastructure with a
-              systems-first mindset, sharp frontend execution, and backend logic
-              that stays clear under complexity.
-            </p>
+            <p className="subhero">{hero.subhero}</p>
+            <p className="lede">{hero.lede}</p>
 
             <div className="hero-actions">
               <a className="button button-primary" href="#mental-lab">
-                Enter Mental Lab
+                {hero.primaryCta}
               </a>
               <a className="button button-ghost" href="#connection-protocol">
-                Open Hiring Channel
+                {hero.secondaryCta}
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="hero-tail signal-strip" aria-label="Profile highlights">
-        <div>
-          <span className="signal-label">Current Role</span>
-          <p>Fullstack Product Builder</p>
-        </div>
-        <div>
-          <span className="signal-label">Primary Focus</span>
-          <p>Scalable web systems and polished UX</p>
-        </div>
-        <div>
-          <span className="signal-label">Operating Mode</span>
-          <p>Interface, logic, data, deployment</p>
-        </div>
+      <div className="hero-tail signal-strip" aria-label={hero.highlightsLabel}>
+        {hero.highlights.map((highlight) => (
+          <div key={highlight.label}>
+            <span className="signal-label">{highlight.label}</span>
+            <p>{highlight.text}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

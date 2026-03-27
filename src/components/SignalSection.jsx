@@ -1,6 +1,6 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function SignalSection({ isVisible, signals }) {
+export function SignalSection({ isVisible, signal }) {
   return (
     <section
       className={`section signal-section ${isVisible ? "is-visible" : ""}`}
@@ -8,33 +8,27 @@ export function SignalSection({ isVisible, signals }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label="Signal Feed" />
+        <SectionIntro label={signal.intro} />
 
         <div className="section-heading">
-          <h2>TECHNICAL CREDIBILITY SHOULD BE VISIBLE, NOT IMPLIED.</h2>
-          <p>
-            These are the quality signals I care about when building software and
-            the standards I aim to bring into every team.
-          </p>
+          <h2>{signal.title}</h2>
+          <p>{signal.description}</p>
         </div>
 
         <div className="integral-list">
-          {signals.map((signal) => (
-            <article className="integral-row" key={signal.index}>
-              <span className="row-index">{signal.index}</span>
-              <h3>{signal.title}</h3>
-              <p>{signal.text}</p>
+          {signal.items.map((item) => (
+            <article className="integral-row" key={item.index}>
+              <span className="row-index">{item.index}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
 
         <div className="current-state">
-          <span className="signal-label">Current State</span>
-          <h3>Actively sharpening fullstack depth.</h3>
-          <p>
-            Focused on building stronger product systems, improving frontend
-            precision, and writing backend code that scales with confidence.
-          </p>
+          <span className="signal-label">{signal.currentState.label}</span>
+          <h3>{signal.currentState.title}</h3>
+          <p>{signal.currentState.text}</p>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function LabSection({ isVisible, labEntries }) {
+export function LabSection({ isVisible, lab }) {
   return (
     <section
       className={`section lab-section ${isVisible ? "is-visible" : ""}`}
@@ -8,18 +8,15 @@ export function LabSection({ isVisible, labEntries }) {
       data-section
     >
       <div className="section-frame">
-        <SectionIntro label="Mental Lab" />
+        <SectionIntro label={lab.intro} />
 
         <div className="section-heading">
-          <h2>EACH PROJECT IS A DEPLOYED THOUGHT PROCESS.</h2>
-          <p>
-            I do not present projects as screenshots. I present them as technical
-            decisions translated into useful systems.
-          </p>
+          <h2>{lab.title}</h2>
+          <p>{lab.description}</p>
         </div>
 
         <div className="lab-stream">
-          {labEntries.map((entry) => (
+          {lab.entries.map((entry) => (
             <article className="lab-entry" key={entry.title}>
               <div className="entry-topline">
                 <span>{entry.experiment}</span>

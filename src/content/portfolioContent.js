@@ -1,107 +1,360 @@
-export const navItems = [
-  { id: "core-identity", label: "Identity" },
-  { id: "mental-lab", label: "Lab" },
-  { id: "neural-stack", label: "Stack" },
-  { id: "signal-feed", label: "Signal" },
-  { id: "connection-protocol", label: "Connect" },
-];
-
-export const identityRows = [
-  {
-    index: "01",
-    title: "Structured Thinking",
-    text: "I break problems into flows, boundaries, and responsibilities before writing code, so implementations stay scalable instead of reactive.",
-  },
-  {
-    index: "02",
-    title: "Product Awareness",
-    text: "I care about user clarity, not just technical correctness. Good software has to make sense on screen and in code.",
-  },
-  {
-    index: "03",
-    title: "Delivery Discipline",
-    text: "I value maintainability, performance, and predictable release habits because quality is part of the user experience.",
-  },
-];
-
-export const labEntries = [
-  {
-    experiment: "Experiment 01",
-    label: "Fullstack Platform",
-    title: "Product Operations Dashboard",
-    text: "Designed an internal workspace to centralize workflows, operational visibility, and role-based actions across the team.",
-    points: [
-      "Scope: frontend architecture, API integration, UX flows",
-      "Challenge: keep dense information readable and fast",
-      "Outcome: clearer workflows and stronger operational control",
+export const portfolioContent = {
+  en: {
+    navItems: [
+      { id: "core-identity", label: "Identity" },
+      { id: "mental-lab", label: "Lab" },
+      { id: "neural-stack", label: "Stack" },
+      { id: "signal-feed", label: "Signal" },
+      { id: "connection-protocol", label: "Connect" },
     ],
+    navbar: {
+      brand: "EMANUEL MARTINEZ",
+      toggleLabel: "Switch language",
+      languages: {
+        en: "EN",
+        es: "ES",
+      },
+    },
+    hero: {
+      intro: "Mind Interface",
+      microcopy: "Neural entry point",
+      title: ["EMANUEL'S", "FULLSTACK", "SIGNAL"],
+      subhero: "A futuristic portfolio engineered to feel like a live system.",
+      lede:
+        "I build web products from interface to infrastructure with a systems-first mindset, sharp frontend execution, and backend logic that stays clear under complexity.",
+      primaryCta: "Enter Mental Lab",
+      secondaryCta: "Open Hiring Channel",
+      highlightsLabel: "Profile highlights",
+      highlights: [
+        { label: "Current Role", text: "Fullstack Product Builder" },
+        { label: "Primary Focus", text: "Scalable web systems and polished UX" },
+        { label: "Operating Mode", text: "Interface, logic, data, deployment" },
+      ],
+    },
+    identity: {
+      intro: "Core Identity",
+      title: "THE WAY I THINK IS THE PRODUCT I BRING TO A TEAM.",
+      description:
+        "I like software that feels coherent end to end. The interface should guide action, the backend should stay predictable, and the release process should reduce friction instead of adding it.",
+      rows: [
+        {
+          index: "01",
+          title: "Structured Thinking",
+          text: "I break problems into flows, boundaries, and responsibilities before writing code, so implementations stay scalable instead of reactive.",
+        },
+        {
+          index: "02",
+          title: "Product Awareness",
+          text: "I care about user clarity, not just technical correctness. Good software has to make sense on screen and in code.",
+        },
+        {
+          index: "03",
+          title: "Delivery Discipline",
+          text: "I value maintainability, performance, and predictable release habits because quality is part of the user experience.",
+        },
+      ],
+    },
+    lab: {
+      intro: "Mental Lab",
+      title: "EACH PROJECT IS A DEPLOYED THOUGHT PROCESS.",
+      description:
+        "I do not present projects as screenshots. I present them as technical decisions translated into useful systems.",
+      entries: [
+        {
+          experiment: "Experiment 01",
+          label: "Fullstack Platform",
+          title: "Product Operations Dashboard",
+          text: "Designed an internal workspace to centralize workflows, operational visibility, and role-based actions across the team.",
+          points: [
+            "Scope: frontend architecture, API integration, UX flows",
+            "Challenge: keep dense information readable and fast",
+            "Outcome: clearer workflows and stronger operational control",
+          ],
+        },
+        {
+          experiment: "Experiment 02",
+          label: "Service Layer",
+          title: "Authentication and Access System",
+          text: "Built a secure entry layer with session control, protected routes, and differentiated access based on system responsibilities.",
+          points: [
+            "Scope: auth flows, backend validation, route protection",
+            "Challenge: keep security strong without harming UX",
+            "Outcome: safer navigation and cleaner permission logic",
+          ],
+        },
+        {
+          experiment: "Experiment 03",
+          label: "Data Engine",
+          title: "Real-Time Monitoring Interface",
+          text: "Created a live data experience for status tracking, activity awareness, and operational decision-making.",
+          points: [
+            "Scope: UI state design, real-time sync, dashboard behavior",
+            "Challenge: avoid noise while exposing useful change",
+            "Outcome: higher visibility and quicker reaction loops",
+          ],
+        },
+      ],
+    },
+    stack: {
+      intro: "Neural Stack",
+      title: "MY STACK IS ORGANIZED BY CAPABILITY, NOT BY LOGO COLLECTION.",
+      description:
+        "I prefer technologies that help build coherent products, maintainable services, and dependable delivery cycles.",
+      capabilities: [
+        {
+          index: "01",
+          title: "Interface Systems",
+          text: "Responsive product UIs, component structure, state handling, and frontend experiences that stay clear under complexity.",
+        },
+        {
+          index: "02",
+          title: "Backend Logic",
+          text: "APIs, validations, business rules, service organization, and application flows that remain explicit and testable.",
+        },
+        {
+          index: "03",
+          title: "Data Modeling",
+          text: "Relational thinking, query clarity, and data structures built around long-term maintainability.",
+        },
+        {
+          index: "04",
+          title: "Delivery Quality",
+          text: "Performance awareness, testing habits, deployment discipline, and engineering standards that protect the product over time.",
+        },
+      ],
+    },
+    signal: {
+      intro: "Signal Feed",
+      title: "TECHNICAL CREDIBILITY SHOULD BE VISIBLE, NOT IMPLIED.",
+      description:
+        "These are the quality signals I care about when building software and the standards I aim to bring into every team.",
+      items: [
+        {
+          index: "A",
+          title: "Readable Architecture",
+          text: "Clear responsibilities across screens, services, and data flow.",
+        },
+        {
+          index: "B",
+          title: "Performance Awareness",
+          text: "Interfaces should stay responsive and services should stay predictable.",
+        },
+        {
+          index: "C",
+          title: "Testing Mindset",
+          text: "Critical logic deserves confidence before release, not after failure.",
+        },
+        {
+          index: "D",
+          title: "Delivery Discipline",
+          text: "Clean handoffs, reliable deploys, and attention to production reality.",
+        },
+      ],
+      currentState: {
+        label: "Current State",
+        title: "Actively sharpening fullstack depth.",
+        text: "Focused on building stronger product systems, improving frontend precision, and writing backend code that scales with confidence.",
+      },
+    },
+    contact: {
+      intro: "Connection Protocol",
+      title: "LOOKING FOR A FULLSTACK DEVELOPER WHO THINKS BEYOND ISOLATED TASKS.",
+      description:
+        "I am interested in product teams where technical quality, thoughtful execution, and long-term growth matter.",
+      items: [
+        {
+          label: "Preferred Channel",
+          text: "emanuel@example.com",
+          href: "mailto:emanuel@example.com",
+        },
+        {
+          label: "Hiring Context",
+          text: "Frontend-heavy fullstack roles, product teams, growth environments.",
+        },
+        {
+          label: "Availability",
+          text: "Open to new opportunities and technical conversations.",
+        },
+      ],
+    },
   },
-  {
-    experiment: "Experiment 02",
-    label: "Service Layer",
-    title: "Authentication and Access System",
-    text: "Built a secure entry layer with session control, protected routes, and differentiated access based on system responsibilities.",
-    points: [
-      "Scope: auth flows, backend validation, route protection",
-      "Challenge: keep security strong without harming UX",
-      "Outcome: safer navigation and cleaner permission logic",
+  es: {
+    navItems: [
+      { id: "core-identity", label: "Identidad" },
+      { id: "mental-lab", label: "Lab" },
+      { id: "neural-stack", label: "Stack" },
+      { id: "signal-feed", label: "Señal" },
+      { id: "connection-protocol", label: "Contacto" },
     ],
+    navbar: {
+      brand: "EMANUEL MARTINEZ",
+      toggleLabel: "Cambiar idioma",
+      languages: {
+        en: "EN",
+        es: "ES",
+      },
+    },
+    hero: {
+      intro: "Interfaz Mental",
+      microcopy: "Punto de entrada neural",
+      title: ["EMANUEL'S", "FULLSTACK", "SIGNAL"],
+      subhero: "Un portafolio futurista diseñado para sentirse como un sistema vivo.",
+      lede:
+        "Construyo productos web desde la interfaz hasta la infraestructura, con mentalidad sistémica, ejecución frontend precisa y lógica backend clara incluso en escenarios complejos.",
+      primaryCta: "Entrar al Mental Lab",
+      secondaryCta: "Abrir canal de contratación",
+      highlightsLabel: "Resumen del perfil",
+      highlights: [
+        { label: "Rol Actual", text: "Desarrollador Fullstack orientado a producto" },
+        { label: "Foco Principal", text: "Sistemas web escalables y UX pulida" },
+        { label: "Modo de Trabajo", text: "Interfaz, lógica, datos y despliegue" },
+      ],
+    },
+    identity: {
+      intro: "Identidad Central",
+      title: "LA FORMA EN QUE PIENSO ES EL PRODUCTO QUE LLEVO A UN EQUIPO.",
+      description:
+        "Me interesa el software que se siente coherente de punta a punta. La interfaz tiene que guiar la acción, el backend debe ser predecible y el proceso de entrega tiene que reducir fricción, no agregarla.",
+      rows: [
+        {
+          index: "01",
+          title: "Pensamiento Estructurado",
+          text: "Descompongo los problemas en flujos, límites y responsabilidades antes de escribir código, para que las implementaciones escalen en lugar de reaccionar tarde.",
+        },
+        {
+          index: "02",
+          title: "Visión de Producto",
+          text: "Me importa la claridad para el usuario, no solo la corrección técnica. Un buen software tiene que tener sentido en pantalla y también en el código.",
+        },
+        {
+          index: "03",
+          title: "Disciplina de Entrega",
+          text: "Valoro la mantenibilidad, la performance y los hábitos de release predecibles porque la calidad también forma parte de la experiencia del usuario.",
+        },
+      ],
+    },
+    lab: {
+      intro: "Mental Lab",
+      title: "CADA PROYECTO ES UN PROCESO DE PENSAMIENTO DESPLEGADO.",
+      description:
+        "No presento proyectos como simples screenshots. Los presento como decisiones técnicas convertidas en sistemas útiles.",
+      entries: [
+        {
+          experiment: "Experimento 01",
+          label: "Plataforma Fullstack",
+          title: "Dashboard de Operaciones de Producto",
+          text: "Diseñé un workspace interno para centralizar flujos, visibilidad operativa y acciones por rol dentro del equipo.",
+          points: [
+            "Scope: arquitectura frontend, integración de APIs, flujos UX",
+            "Desafío: mantener información densa legible y rápida",
+            "Resultado: workflows más claros y mayor control operativo",
+          ],
+        },
+        {
+          experiment: "Experimento 02",
+          label: "Capa de Servicios",
+          title: "Sistema de Autenticación y Accesos",
+          text: "Construí una capa de ingreso segura con control de sesiones, rutas protegidas y accesos diferenciados según responsabilidades del sistema.",
+          points: [
+            "Scope: flujos de auth, validación backend, protección de rutas",
+            "Desafío: sostener seguridad fuerte sin dañar la UX",
+            "Resultado: navegación más segura y permisos más claros",
+          ],
+        },
+        {
+          experiment: "Experimento 03",
+          label: "Motor de Datos",
+          title: "Interfaz de Monitoreo en Tiempo Real",
+          text: "Creé una experiencia de datos en vivo para seguimiento de estado, visibilidad de actividad y toma de decisiones operativas.",
+          points: [
+            "Scope: diseño de estado UI, sincronización realtime, comportamiento del dashboard",
+            "Desafío: evitar ruido y mostrar solo cambios útiles",
+            "Resultado: más visibilidad y respuesta más rápida",
+          ],
+        },
+      ],
+    },
+    stack: {
+      intro: "Neural Stack",
+      title: "MI STACK SE ORGANIZA POR CAPACIDAD, NO POR COLECCIÓN DE LOGOS.",
+      description:
+        "Prefiero tecnologías que ayuden a construir productos coherentes, servicios mantenibles y ciclos de entrega confiables.",
+      capabilities: [
+        {
+          index: "01",
+          title: "Sistemas de Interfaz",
+          text: "UIs de producto responsivas, estructura de componentes, manejo de estado y experiencias frontend que siguen siendo claras bajo complejidad.",
+        },
+        {
+          index: "02",
+          title: "Lógica Backend",
+          text: "APIs, validaciones, reglas de negocio, organización de servicios y flujos de aplicación que se mantienen explícitos y testeables.",
+        },
+        {
+          index: "03",
+          title: "Modelado de Datos",
+          text: "Pensamiento relacional, consultas claras y estructuras de datos orientadas a la mantenibilidad a largo plazo.",
+        },
+        {
+          index: "04",
+          title: "Calidad de Entrega",
+          text: "Conciencia de performance, hábitos de testing, disciplina de despliegue y estándares de ingeniería que protegen el producto en el tiempo.",
+        },
+      ],
+    },
+    signal: {
+      intro: "Canal de Señal",
+      title: "LA CREDIBILIDAD TÉCNICA DEBE VERSE, NO SUPONERSE.",
+      description:
+        "Estas son las señales de calidad que priorizo al construir software y los estándares que busco aportar a cada equipo.",
+      items: [
+        {
+          index: "A",
+          title: "Arquitectura Legible",
+          text: "Responsabilidades claras entre pantallas, servicios y flujo de datos.",
+        },
+        {
+          index: "B",
+          title: "Conciencia de Performance",
+          text: "Las interfaces deben sentirse ágiles y los servicios deben mantenerse predecibles.",
+        },
+        {
+          index: "C",
+          title: "Mentalidad de Testing",
+          text: "La lógica crítica merece confianza antes del release, no después del fallo.",
+        },
+        {
+          index: "D",
+          title: "Disciplina de Entrega",
+          text: "Handoffs limpios, deploys confiables y atención a la realidad de producción.",
+        },
+      ],
+      currentState: {
+        label: "Estado Actual",
+        title: "Profundizando activamente mi perfil fullstack.",
+        text: "Enfocado en construir sistemas de producto más sólidos, mejorar la precisión frontend y escribir backend que escale con confianza.",
+      },
+    },
+    contact: {
+      intro: "Protocolo de Conexión",
+      title: "BUSCO EQUIPOS QUE NECESITEN UN FULLSTACK QUE PIENSE MÁS ALLÁ DE TAREAS AISLADAS.",
+      description:
+        "Me interesan equipos de producto donde la calidad técnica, la ejecución cuidadosa y el crecimiento a largo plazo realmente importen.",
+      items: [
+        {
+          label: "Canal Preferido",
+          text: "emanuel@example.com",
+          href: "mailto:emanuel@example.com",
+        },
+        {
+          label: "Contexto de Búsqueda",
+          text: "Roles fullstack con peso en frontend, equipos de producto y entornos de crecimiento.",
+        },
+        {
+          label: "Disponibilidad",
+          text: "Abierto a nuevas oportunidades y conversaciones técnicas.",
+        },
+      ],
+    },
   },
-  {
-    experiment: "Experiment 03",
-    label: "Data Engine",
-    title: "Real-Time Monitoring Interface",
-    text: "Created a live data experience for status tracking, activity awareness, and operational decision-making.",
-    points: [
-      "Scope: UI state design, real-time sync, dashboard behavior",
-      "Challenge: avoid noise while exposing useful change",
-      "Outcome: higher visibility and quicker reaction loops",
-    ],
-  },
-];
-
-export const capabilities = [
-  {
-    index: "01",
-    title: "Interface Systems",
-    text: "Responsive product UIs, component structure, state handling, and frontend experiences that stay clear under complexity.",
-  },
-  {
-    index: "02",
-    title: "Backend Logic",
-    text: "APIs, validations, business rules, service organization, and application flows that remain explicit and testable.",
-  },
-  {
-    index: "03",
-    title: "Data Modeling",
-    text: "Relational thinking, query clarity, and data structures built around long-term maintainability.",
-  },
-  {
-    index: "04",
-    title: "Delivery Quality",
-    text: "Performance awareness, testing habits, deployment discipline, and engineering standards that protect the product over time.",
-  },
-];
-
-export const signals = [
-  {
-    index: "A",
-    title: "Readable Architecture",
-    text: "Clear responsibilities across screens, services, and data flow.",
-  },
-  {
-    index: "B",
-    title: "Performance Awareness",
-    text: "Interfaces should stay responsive and services should stay predictable.",
-  },
-  {
-    index: "C",
-    title: "Testing Mindset",
-    text: "Critical logic deserves confidence before release, not after failure.",
-  },
-  {
-    index: "D",
-    title: "Delivery Discipline",
-    text: "Clean handoffs, reliable deploys, and attention to production reality.",
-  },
-];
+};
