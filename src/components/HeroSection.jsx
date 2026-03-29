@@ -1,11 +1,11 @@
+import { Link } from "react-router-dom";
 import { SectionIntro } from "./SectionIntro";
 
-export function HeroSection({ hero, isVisible }) {
+export function HeroSection({ hero, isVisible = true }) {
   return (
     <section
       className={`section hero ${isVisible ? "is-visible" : ""}`}
       id="mind-interface"
-      data-section
     >
       <div className="section-frame">
         <div className="section-ornament section-ornament-left" aria-hidden="true"></div>
@@ -39,12 +39,12 @@ export function HeroSection({ hero, isVisible }) {
             <p className="lede">{hero.lede}</p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="#mental-lab">
+              <Link className="button button-primary" to={hero.primaryHref}>
                 {hero.primaryCta}
-              </a>
-              <a className="button button-ghost" href="#connection-protocol">
+              </Link>
+              <Link className="button button-ghost" to={hero.secondaryHref}>
                 {hero.secondaryCta}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

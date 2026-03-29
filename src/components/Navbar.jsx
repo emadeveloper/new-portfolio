@@ -1,9 +1,9 @@
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import { sectionIconById } from "./sectionIcons";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { sectionIconByPath } from "./sectionIcons";
 
 export function Navbar({
-  activeSection,
   isTopbarStuck,
   language,
   navbar,
@@ -11,33 +11,39 @@ export function Navbar({
   onToggleLanguage,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <div className={`topbar2-shell ${isTopbarStuck ? "is-stuck" : ""}`}>
       <header className={`topbar2 ${isTopbarStuck ? "is-stuck" : ""}`}>
         <div className="topbar2-rail">
-          <a
+          <Link
             className="topbar2-brand"
-            href="#mind-interface"
+            to="/"
             aria-label="Go to home"
             onClick={() => setIsMenuOpen(false)}
           >
             <span className="topbar2-brand-core" aria-hidden="true"></span>
             <span className="topbar2-brand-copy">{navbar.brand}</span>
-          </a>
+          </Link>
 
           <nav
+            id="mobile-nav"
             className={`topbar2-nav ${isMenuOpen ? "is-open" : ""}`}
             aria-label="Primary"
           >
             {navItems.map((item) => {
-              const Icon = sectionIconById[item.id];
+              const Icon = sectionIconByPath[item.path];
 
               return (
-                <a
+                <NavLink
                   key={item.id}
-                  href={`#${item.id}`}
-                  className={activeSection === item.id ? "is-active" : ""}
+                  to={item.path}
+                  className={({ isActive }) => (isActive ? "is-active" : "")}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {Icon ? (
@@ -48,7 +54,7 @@ export function Navbar({
                     />
                   ) : null}
                   <span>{item.label}</span>
-                </a>
+                </NavLink>
               );
             })}
           </nav>
@@ -61,11 +67,17 @@ export function Navbar({
               aria-label={navbar.toggleLabel}
             >
               <span className={language === "es" ? "" : "is-active"}>
-                {navbar.languages.en}
+                <span className="language-toggle-flag" aria-hidden="true">
+                  🇺🇸
+                </span>
+                <span>{navbar.languages.en}</span>
               </span>
               <span className="language-toggle-divider" aria-hidden="true"></span>
               <span className={language === "es" ? "is-active" : ""}>
-                {navbar.languages.es}
+                <span className="language-toggle-flag" aria-hidden="true">
+                  🇦🇷
+                </span>
+                <span>{navbar.languages.es}</span>
               </span>
             </button>
 

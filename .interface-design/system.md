@@ -22,7 +22,7 @@
 - Desktop navbar stays as a luminous rail with inline anchors.
 - Mobile navbar uses:
   - brand on the left
-  - language toggle as a compact inline control
+  - language toggle as a compact inline control with visible country flags
   - menu trigger on the right
   - a dropdown nav panel below the rail
 - Mobile nav panel should prefer a 2-column anchor grid when width allows, collapsing to 1 column on narrower screens.
@@ -31,3 +31,9 @@
   - visual
   - body
   - stack and CTAs
+- Routed section pages use a persistent return CTA fixed near the lower-right corner instead of centered.
+- The return CTA should stay solid and dark, with restrained cyan neon guide lines instead of a bright flat accent.
+- Contact pages can use a “transmission panel” pattern:
+  - top metadata strip
+  - central form block
+  - structured outreach copy framed as value and fit, not availability

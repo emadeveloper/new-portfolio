@@ -1,11 +1,10 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function IdentitySection({ identity, isVisible }) {
+export function IdentitySection({ identity, isVisible = true }) {
   return (
     <section
       className={`section identity-section ${isVisible ? "is-visible" : ""}`}
       id="core-identity"
-      data-section
     >
       <div className="section-frame">
         <SectionIntro icon="identity" label={identity.intro} />

@@ -1,11 +1,10 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function SignalSection({ isVisible, signal }) {
+export function SignalSection({ isVisible = true, signal }) {
   return (
     <section
       className={`section signal-section ${isVisible ? "is-visible" : ""}`}
       id="signal-feed"
-      data-section
     >
       <div className="section-frame">
         <SectionIntro icon="signal" label={signal.intro} />

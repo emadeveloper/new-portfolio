@@ -1,11 +1,10 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function LabSection({ isVisible, lab }) {
+export function LabSection({ isVisible = true, lab }) {
   return (
     <section
       className={`section lab-section ${isVisible ? "is-visible" : ""}`}
       id="mental-lab"
-      data-section
     >
       <div className="section-frame">
         <SectionIntro icon="lab" label={lab.intro} />

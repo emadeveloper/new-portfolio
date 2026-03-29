@@ -1,11 +1,10 @@
 import { SectionIntro } from "./SectionIntro";
 
-export function StackSection({ isVisible, stack }) {
+export function StackSection({ isVisible = true, stack }) {
   return (
     <section
       className={`section stack-section ${isVisible ? "is-visible" : ""}`}
       id="neural-stack"
-      data-section
     >
       <div className="section-frame">
         <SectionIntro icon="stack" label={stack.intro} />

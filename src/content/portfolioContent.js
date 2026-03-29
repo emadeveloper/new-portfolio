@@ -1,11 +1,13 @@
+import { appRoutes } from "../routes";
+
 export const portfolioContent = {
   en: {
     navItems: [
-      { id: "core-identity", label: "Identity" },
-      { id: "mental-lab", label: "Lab" },
-      { id: "neural-stack", label: "Stack" },
-      { id: "signal-feed", label: "Signal" },
-      { id: "connection-protocol", label: "Connect" },
+      { id: "core-identity", path: appRoutes.identity, label: "Identity" },
+      { id: "mental-lab", path: appRoutes.lab, label: "Lab" },
+      { id: "neural-stack", path: appRoutes.stack, label: "Stack" },
+      { id: "signal-feed", path: appRoutes.signal, label: "Signal" },
+      { id: "connection-protocol", path: appRoutes.connect, label: "Connect" },
     ],
     navbar: {
       brand: "EMANUEL MARTINEZ",
@@ -23,7 +25,9 @@ export const portfolioContent = {
       lede:
         "I build web products from interface to infrastructure with a systems-first mindset, sharp frontend execution, and backend logic that stays clear under complexity.",
       primaryCta: "Enter Mental Lab",
+      primaryHref: appRoutes.lab,
       secondaryCta: "Open Hiring Channel",
+      secondaryHref: appRoutes.connect,
       highlightsLabel: "Profile highlights",
       highlights: [
         { label: "Current Role", text: "Fullstack Product Builder" },
@@ -195,9 +199,9 @@ export const portfolioContent = {
     },
     contact: {
       intro: "Connection Protocol",
-      title: "LOOKING FOR A FULLSTACK DEVELOPER WHO THINKS BEYOND ISOLATED TASKS.",
+      title: "I AM BUILT FOR TEAMS THAT NEED EXECUTION, CLARITY, AND TECHNICAL JUDGMENT.",
       description:
-        "I am interested in product teams where technical quality, thoughtful execution, and long-term growth matter.",
+        "I bring product awareness, structured engineering, and end-to-end delivery. The right team gets someone who can think across interface, backend, data, and release quality without losing clarity.",
       items: [
         {
           label: "Preferred Channel",
@@ -205,23 +209,64 @@ export const portfolioContent = {
           href: "mailto:emanuel@example.com",
         },
         {
-          label: "Hiring Context",
-          text: "Frontend-heavy fullstack roles, product teams, growth environments.",
+          label: "Best Fit",
+          text: "Product teams that need a fullstack engineer with strong frontend judgment and systems thinking.",
         },
         {
-          label: "Availability",
-          text: "Open to new opportunities and technical conversations.",
+          label: "What I Add",
+          text: "Clear execution, readable architecture, and a product mindset that improves decisions across the stack.",
         },
       ],
+      form: {
+        panelLabel: "Transmission Channel",
+        title: "START THE CONVERSATION IF YOU NEED A FULLSTACK PROFILE WITH JUDGMENT AND RANGE.",
+        description:
+          "Use this channel if you are hiring for technical judgment, product sensitivity, and strong execution. The message opens already structured so the conversation starts with context.",
+        markersLabel: "Transmission markers",
+        markers: ["Execution", "Product judgment", "Fullstack range"],
+        targetEmail: "emanuel@example.com",
+        mailSubjectPrefix: "Neural contact |",
+        bodyLabels: {
+          sender: "Sender",
+          email: "Email",
+          mission: "Mission",
+          message: "Message",
+        },
+        fields: {
+          sender: {
+            label: "Origin identity",
+            placeholder: "Your name, company, or hiring lead identity",
+          },
+          email: {
+            label: "Reply channel",
+            placeholder: "name@company.com",
+          },
+          mission: {
+            label: "Mission context",
+            placeholder: "Role scope, team context, or product challenge",
+          },
+          message: {
+            label: "Transmission payload",
+            placeholder:
+              "Describe what you are building, where the team needs stronger technical leverage, and why this role matters now.",
+          },
+        },
+        helper:
+          "Submitting opens your email client with a structured outreach draft, ready to send.",
+        submitLabel: "Transmit briefing",
+      },
+    },
+    shared: {
+      backToHub: "Back to the Mind-Hub",
     },
   },
   es: {
     navItems: [
-      { id: "core-identity", label: "Identidad" },
-      { id: "mental-lab", label: "Lab" },
-      { id: "neural-stack", label: "Stack" },
-      { id: "signal-feed", label: "Señal" },
-      { id: "connection-protocol", label: "Contacto" },
+      { id: "core-identity", path: appRoutes.identity, label: "Identidad" },
+      { id: "mental-lab", path: appRoutes.lab, label: "Lab" },
+      { id: "neural-stack", path: appRoutes.stack, label: "Stack" },
+      { id: "signal-feed", path: appRoutes.signal, label: "Señal" },
+      { id: "connection-protocol", path: appRoutes.connect, label: "Contacto" },
     ],
     navbar: {
       brand: "EMANUEL MARTINEZ",
@@ -239,7 +284,9 @@ export const portfolioContent = {
       lede:
         "Construyo productos web desde la interfaz hasta la infraestructura, con mentalidad sistémica, ejecución frontend precisa y lógica backend clara incluso en escenarios complejos.",
       primaryCta: "Entrar al Mental Lab",
+      primaryHref: appRoutes.lab,
       secondaryCta: "Abrir canal de contratación",
+      secondaryHref: appRoutes.connect,
       highlightsLabel: "Resumen del perfil",
       highlights: [
         { label: "Rol Actual", text: "Desarrollador Fullstack orientado a producto" },
@@ -411,9 +458,9 @@ export const portfolioContent = {
     },
     contact: {
       intro: "Protocolo de Conexión",
-      title: "BUSCO EQUIPOS QUE NECESITEN UN FULLSTACK QUE PIENSE MÁS ALLÁ DE TAREAS AISLADAS.",
+      title: "ESTOY HECHO PARA EQUIPOS QUE NECESITAN EJECUCIÓN, CLARIDAD Y CRITERIO TÉCNICO.",
       description:
-        "Me interesan equipos de producto donde la calidad técnica, la ejecución cuidadosa y el crecimiento a largo plazo realmente importen.",
+        "Aporto mirada de producto, ingeniería estructurada y capacidad de entrega end-to-end. El equipo correcto suma a alguien que puede pensar interfaz, backend, datos y calidad de release sin perder claridad.",
       items: [
         {
           label: "Canal Preferido",
@@ -421,14 +468,55 @@ export const portfolioContent = {
           href: "mailto:emanuel@example.com",
         },
         {
-          label: "Contexto de Búsqueda",
-          text: "Roles fullstack con peso en frontend, equipos de producto y entornos de crecimiento.",
+          label: "Mejor Encaje",
+          text: "Equipos de producto que necesiten un fullstack con criterio frontend fuerte y pensamiento sistémico.",
         },
         {
-          label: "Disponibilidad",
-          text: "Abierto a nuevas oportunidades y conversaciones técnicas.",
+          label: "Lo Que Aporto",
+          text: "Ejecución clara, arquitectura legible y una mentalidad de producto que mejora decisiones en todo el stack.",
         },
       ],
+      form: {
+        panelLabel: "Canal de Transmisión",
+        title: "INICIÁ LA CONVERSACIÓN SI BUSCÁS UN PERFIL FULLSTACK CON CRITERIO Y RANGO TÉCNICO.",
+        description:
+          "Usá este canal si estás contratando por criterio técnico, sensibilidad de producto y capacidad de ejecución. El mensaje se abre ya estructurado para que la conversación arranque con contexto.",
+        markersLabel: "Marcadores de transmisión",
+        markers: ["Ejecución", "Criterio de producto", "Rango fullstack"],
+        targetEmail: "emanuel@example.com",
+        mailSubjectPrefix: "Contacto neural |",
+        bodyLabels: {
+          sender: "Origen",
+          email: "Email",
+          mission: "Contexto",
+          message: "Mensaje",
+        },
+        fields: {
+          sender: {
+            label: "Identidad de origen",
+            placeholder: "Tu nombre, empresa o identidad del hiring lead",
+          },
+          email: {
+            label: "Canal de respuesta",
+            placeholder: "nombre@empresa.com",
+          },
+          mission: {
+            label: "Contexto de misión",
+            placeholder: "Alcance del rol, contexto del equipo o desafío de producto",
+          },
+          message: {
+            label: "Carga de transmisión",
+            placeholder:
+              "Contame qué están construyendo, dónde el equipo necesita más peso técnico y por qué este rol importa ahora.",
+          },
+        },
+        helper:
+          "Al enviar se abrirá tu cliente de correo con un borrador estructurado, listo para mandar.",
+        submitLabel: "Transmitir briefing",
+      },
+    },
+    shared: {
+      backToHub: "Volver a la mente",
     },
   },
 };

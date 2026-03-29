@@ -16,10 +16,10 @@ export const sectionIcons = {
   contact: SendHorizontal,
 };
 
-export const sectionIconById = {
-  "core-identity": sectionIcons.identity,
-  "mental-lab": sectionIcons.lab,
-  "neural-stack": sectionIcons.stack,
-  "signal-feed": sectionIcons.signal,
-  "connection-protocol": sectionIcons.contact,
+export const sectionIconByPath = {
+  "/identity": sectionIcons.identity,
+  "/lab": sectionIcons.lab,
+  "/stack": sectionIcons.stack,
+  "/signal": sectionIcons.signal,
+  "/connect": sectionIcons.contact,
 };
